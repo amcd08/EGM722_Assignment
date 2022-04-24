@@ -58,7 +58,7 @@ gdf = gdf.to_crs(epsg=32629)
 gdf
 
 #convert to points shapefile and import
-gdf.to_file('schoolF_points.shp')
+gdf.to_file('data_files/schoolF_points.shp')
 myshcs = gpd.read_file('data_files/schoolF_points.shp')
 print(myshcs.head())
 
