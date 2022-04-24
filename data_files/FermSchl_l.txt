@@ -1,0 +1,54 @@
+Name,town,Postcode,Level,lat,lon
+Aghadrumsee Primary School,ENNISKILLEN,BT92 7AU,Primary,54.22984,-7.27745
+Ballinamallard Primary School,ENNISKILLEN,BT94 2NY,Primary,54.42414,-7.59608
+Belleek(2) Primary School,ENNISKILLEN,BT93 3EZ,Primary,54.47058,-8.0956
+Brookeborough Primary School,ENNISKILLEN,BT94 4EZ,Primary,54.31494,-7.40359
+Bunscoil an Traonaigh,LISNASKEA,BT92 OPE,Primary,54.26303,-7.4621
+Derrygonnelly Primary School,ENNISKILLEN,BT93 6HY,Primary,54.41873,-7.81491
+Devenish College,ENNISKILLEN,BT74 6JL,Secondary ,54.33862,-7.63278
+Enniskillen Integrated Primary School,ENNISKILLEN,BT74 4FH,Primary,54.35907,-7.64108
+Enniskillen Model Primary School,ENNISKILLEN,BT74 6HZ,Primary,54.34186,-7.6252
+Erne Integrated College,ENNISKILLEN,BT74 4FY,Secondary ,54.36125,-7.63835
+Florencecourt Primary School,ENNISKILLEN,BT92 1BZ,Primary,54.26583,-7.71574
+Holy Trinity Primary School,ENNISKILLEN,BT74 6AZ,Primary,54.35118,-7.64197
+Irvinestown Primary School,ENNISKILLEN,BT94 1DY,Primary,54.47158,-7.6419
+Jones Memorial Primary School,ENNISKILLEN,BT74 5QF,Primary,54.32966,-7.65959
+Kesh Primary School,ENNISKILLEN,BT93 1RF,Primary,54.5183,-7.72229
+Killyhommon Primary School,ENNISKILLEN,BT74 8BZ,Primary,54.36408,-7.80345
+Lack Primary School,ENNISKILLEN,BT93 0BU,Primary,54.54655,-7.57935
+Lisbellaw Primary School,ENNISKILLEN,BT94 5BF,Primary,54.31377,-7.5422
+Maguiresbridge Primary School,ENNISKILLEN,BT94 4PB,Primary,54.29525,-7.46947
+Moat Primary School,ENNISKILLEN,BT92 0JH,Primary,54.24972,-7.44426
+Mount Lourdes Grammar School,ENNISKILLEN,BT74 6AB,Secondary ,54.34507,-7.63482
+Newtownbutler(2) Primary School,ENNISKILLEN,BT92 8JE,Primary,54.18465,-7.36364
+St Aidan's High School,ENNISKILLEN,BT92 9LD,Secondary ,54.19203,-7.56409
+St Columban's Primary School,ENNISKILLEN,BT93 5DS,Primary,54.30113,-7.87828
+St Comhghall's College,ENNISKILLEN,BT92 0LA,Secondary ,54.26235,-7.45166
+St Davog's Primary School,ENNISKILLEN,BT93 3FJ,Primary,54.48318,-8.08849
+St Eugene's College,ENNISKILLEN,BT92 7AF,Secondary ,54.2378,-7.17175
+St Fanchea's College,ENNISKILLEN,BT74 4AD,Secondary ,54.35386,-7.61516
+St John the Baptist Primary School,ENNISKILLEN,BT93 3DP,Primary,54.46596,-8.03744
+St Joseph's College,ENNISKILLEN,BT74 6DE,Secondary ,54.35073,-7.62271
+St Joseph's Primary School,ENNISKILLEN,BT93 0HA,Primary,54.53092,-7.65931
+St Joseph's Primary School,ENNISKILLEN,BT92 5BE,Primary,54.217,-7.38884
+St Macartan's Primary School,ROSLEA,BT92 7NQ,Primary,54.22698,-7.25647
+St Martin's Primary School,ENNISKILLEN,BT93 4AE,Primary,54.41978,-8.08894
+St Mary's College,ENNISKILLEN,BT94 1EL,Secondary ,54.47134,-7.63789
+St Mary's High School,ENNISKILLEN,BT93 3AH,Secondary ,54.45647,-8.08934
+St Mary's Primary School,ENNISKILLEN,BT92 8JJ,Primary,54.17908,-7.36001
+St Mary's Primary School,ENNISKILLEN,BT94 4LR,Primary,54.31796,-7.39996
+St Mary's Primary School,ENNISKILLEN,BT92 3ET,Primary,54.25457,-7.69133
+St Mary's Primary School,ENNISKILLEN,BT92 2AB,Primary,54.29041,-7.67166
+St Mary's Primary School,ENNISKILLEN,BT94 4RG,Primary,54.28987,-7.46359
+St Mary's Primary School,ENNISKILLEN,BT92 9QF,Primary,54.1528,-7.52905
+St Mary's Primary School,ENNISKILLEN,BT94 3HU,Primary,54.38311,-7.46201
+St Michael's College,ENNISKILLEN,BT74 6DE,Secondary ,54.35068,-7.61913
+St Naile's Primary School,ENNISKILLEN,BT92 4FJ,Primary,54.22325,-7.6459
+St Ninnidh's Primary School,ENNISKILLEN,BT92 9JZ,Primary,54.19923,-7.57299
+St Patrick's Primary School,ENNISKILLEN,BT94 3AD,Primary,54.36087,-7.5609
+St Patrick's Primary School,ENNISKILLEN,BT93 6LR,Primary,54.42054,-7.82127
+St Paul's Primary School,ENNISKILLEN,BT94 1EY,Primary,54.47297,-7.64167
+St Ronan's Primary School,ENNISKILLEN,BT92 0LA,Primary,54.26145,-7.45258
+St Tierney's Primary School,ENNISKILLEN,BT92 7JS,Primary,54.24424,-7.1796
+Tattygar Primary School,ENNISKILLEN,BT94 5GT,Primary,54.31998,-7.53575
+Tempo Primary School,ENNISKILLEN,BT94 3LU,Primary,54.38004,-7.458
