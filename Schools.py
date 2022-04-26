@@ -66,7 +66,7 @@ print(myshcs.head())
 #plot the point shapefile in matplotlib axis
 sch_handle = ax.plot(myshcs.geometry.x, myshcs.geometry.y, 's', color='b', ms=7, transform=myCRS)
 
-#import the Assis_Fermanagh shapefile and create geometry col using geppandas
+#import the Assis_Fermanagh shapefile using geppandas
 assis_ferm = gpd.read_file('data_files/Assis_Fermanagh.shp')
 #print(assis_ferm.head())
 
@@ -93,7 +93,7 @@ for i, name in enumerate(type_names):
                           linewidth=2,
                           alpha=0.25)
     ax.add_feature(feat)
-    #myFig  # to show the updated figure
+    myFig  # to show the updated figure
 
 
 #generate_handles for ASSI Type
@@ -110,13 +110,15 @@ labels = nice_names
 leg = ax.legend(handles, labels, title='ASSIs by type', title_fontsize=14,
                  fontsize=12, loc='upper right', frameon=True, framealpha=1)
 
-#for i, row in myshcs.iterrows():
- #   x, y = row.geometry.x, row.geometry.y # get the x,y location for each town
-  #  plt.text(x, y, row['Level'].title(), fontsize=6, transform=myCRS) # use plt.text to place a label at x,y
 
-myFig # to show the updated figure
-myFig.savefig('mapAssi_Schools.png', bbox_inches='tight', dpi=300)
+#subset the counties gdf to select Fermanagh
+counties = gpd.read_file('data_files/Counties.shp')
+fermanagh_gdf = counties[counties['CountyName']=='FERMANAGH']
+fermanagh_gdf.crs
 
+outline_feat = ShapelyFeature(fermanagh_gdf['geometry'], myCRS, facecolor='none', edgecolor = 'black')
+xmin, ymin, xmax, ymax = fermanagh_gdf.total_bounds
+ax.add_feature(outline_feat)
 
 gridlines = ax.gridlines(draw_labels=True,
                          xlocs=[-8, -7.5],
@@ -128,13 +130,6 @@ ax.set_extent([xmin, xmax, ymin, ymax], crs=myCRS) # set the extent to the bound
 scale_bar(ax)
 myFig # to show the updated figure
 
-# Create a output path for the data
-#out = r"/home/geo/Data/DAMSELFISH_distributions_SELECTION.shp"
 
-#counties = gpd.read_file('data_files/Counties.shp')
-#out = ('data_files/Co_Ferm.shp')
-# Select Co Fermanagh
 
-#selection = counties[counties['CountyName'] == 'FERMANAGH']
-# Write those rows into a new Shapefile (the default output file format is Shapefile)
-#selection.to_file(out)
+
