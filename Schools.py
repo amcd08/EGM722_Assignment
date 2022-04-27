@@ -18,7 +18,7 @@ def generate_handles(labels, colors, edge='k', alpha=1):
         handles.append(mpatches.Rectangle((0, 0), 1, 1, facecolor=colors[i % lc], edgecolor=edge, alpha=alpha))
     return handles
 
-# create a scale bar of length 20 km at the bottom of the map
+# create a scale bar of length 20 km along the bottom of the map
 def scale_bar(ax, location=(0.5, 0.05)):
     llx0, llx1, lly0, lly1 = ax.get_extent(ccrs.PlateCarree())
     sbllx = (llx1 + llx0) / 2
@@ -40,36 +40,29 @@ def scale_bar(ax, location=(0.5, 0.05)):
 myFig = plt.figure(figsize=(10, 10))  # create a figure of size 10x10 (representing the page size in inches)
 
 myCRS = ccrs.UTM(29)  # create a Universal Transverse Mercator reference system to transform our data.
-
 ax = plt.axes(projection=ccrs.Mercator())  # create an axes object using a Mercator projection
 
-#import text file of school locations
+#import text file of school locations in Fermanagh
 df = pd.read_csv('data_files/FermSchl_l.txt')
 df.head()
 #assign point geometry to the dataframe
 df['geometry'] = list(zip(df['lon'], df['lat'])) # zip is an iterator, so we use list to create
 df['geometry'] = df['geometry'].apply(Point)
-df
-#convert df to GDF and assign CRS UTM29
+
+#Create geo data-frame with geopandas; assign CRS UTM29N to plot in Matplotlib
 gdf = gpd.GeoDataFrame(df)
 gdf.set_crs("EPSG:4326", inplace=True) # this sets the coordinate reference system to epsg:4326, wgs84 lat/lon
-
 gdf = gdf.to_crs(epsg=32629)
-gdf
 
-#convert to points shapefile and import
+#write the shapefile
 gdf.to_file('data_files/schoolF_points.shp')
 myshcs = gpd.read_file('data_files/schoolF_points.shp')
-print(myshcs.head())
 
-
-#plot the point shapefile in matplotlib axis
+#plot the school locations
 sch_handle = ax.plot(myshcs.geometry.x, myshcs.geometry.y, 's', color='b', ms=7, transform=myCRS)
 
-#import the Assis_Fermanagh shapefile using geppandas
+#import the ASSIs_Fermanagh shapefile and plot
 assis_ferm = gpd.read_file('data_files/Assis_Fermanagh.shp')
-#print(assis_ferm.head())
-
 assisferm_feat = ShapelyFeature(assis_ferm['geometry'], myCRS, edgecolor='k', facecolor='w')
 xmin, ymin, xmax, ymax = assis_ferm.total_bounds
 
@@ -80,7 +73,7 @@ ax.set_extent([xmin, xmax, ymin, ymax], crs=myCRS) # because total_bounds gives 
 
 #get the number of ASSI types and assign a colour to each
 num_types = len(assis_ferm.Type.unique())
-print('Number of unique features: {}'.format(num_types)) # note how we're using {} and format here!
+print('Number of unique features: {}'.format(num_types))
 assi_colors = ['forestgreen', 'cyan', 'green', 'purple','gold','red']
 type_names = list(assis_ferm.Type.unique())
 
@@ -93,7 +86,7 @@ for i, name in enumerate(type_names):
                           linewidth=2,
                           alpha=0.25)
     ax.add_feature(feat)
-    myFig  # to show the updated figure
+myFig  # to show the updated figure
 
 
 #generate_handles for ASSI Type
@@ -104,7 +97,7 @@ nice_names = [name.title() for name in type_names]
 # ax.legend() takes a list of handles and a list of labels corresponding to the objects you want to add to the legend
 
 handles = assif_handles + sch_handle
-labels = nice_names
+labels = nice_names + ['Schools']
 
 
 leg = ax.legend(handles, labels, title='ASSIs by type', title_fontsize=14,
@@ -115,6 +108,7 @@ leg = ax.legend(handles, labels, title='ASSIs by type', title_fontsize=14,
 counties = gpd.read_file('data_files/Counties.shp')
 fermanagh_gdf = counties[counties['CountyName']=='FERMANAGH']
 fermanagh_gdf.crs
+
 
 outline_feat = ShapelyFeature(fermanagh_gdf['geometry'], myCRS, facecolor='none', edgecolor = 'black')
 xmin, ymin, xmax, ymax = fermanagh_gdf.total_bounds
@@ -128,8 +122,21 @@ gridlines.bottom_labels = False # turn off the bottom labels
 ax.set_extent([xmin, xmax, ymin, ymax], crs=myCRS) # set the extent to the boundaries of the NI outline
 #myFig # to show the updated figure
 scale_bar(ax)
-myFig # to show the updated figure
+ax.set_title("Schools and ASSIs in Co Fermanagh")
+
+#myFig
 
 
 
 
+#find the nearest ASSI to each school
+
+from shapely.strtree import STRtree
+#create a seach index of the ASSIs
+assis_tree = STRtree(assis_ferm['geometry'].values) # creates an STRtree object with the schs data
+
+Fschs = myshcs.loc[myshcs['Name']=='Aghadrumsee Primary School', 'geometry'].values[0]
+nearest = assis_tree.nearest(Fschs) # gets the closest ASSI  to each sch
+#nearest
+#assis_ferm.head()
+#print.(assis_ferm)
