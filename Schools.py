@@ -42,7 +42,7 @@ myFig = plt.figure(figsize=(10, 10))  # create a figure of size 10x10 (represent
 myCRS = ccrs.UTM(29)  # create a Universal Transverse Mercator reference system to transform our data.
 ax = plt.axes(projection=ccrs.Mercator())  # create an axes object using a Mercator projection
 
-#import text file of school locations in Fermanagh
+#import text file of  locations in Fermanagh
 df = pd.read_csv('data_files/FermSchl_l.txt')
 df.head()
 #assign point geometry to the dataframe
@@ -52,7 +52,7 @@ df['geometry'] = df['geometry'].apply(Point)
 #Create geo data-frame with geopandas; assign CRS UTM29N to plot in Matplotlib
 gdf = gpd.GeoDataFrame(df)
 gdf.set_crs("EPSG:4326", inplace=True) # this sets the coordinate reference system to epsg:4326, wgs84 lat/lon
-gdf = gdf.to_crs(epsg=32629)
+gdf = gdf.to_crs(epsg=32629)#change CRS to projected CRS.
 
 #write the shapefile
 gdf.to_file('data_files/schoolF_points.shp')
@@ -61,7 +61,7 @@ myshcs = gpd.read_file('data_files/schoolF_points.shp')
 #plot the school locations
 sch_handle = ax.plot(myshcs.geometry.x, myshcs.geometry.y, 's', color='b', ms=7, transform=myCRS)
 
-#import the ASSIs_Fermanagh shapefile and plot
+#import the ASSIs_Fermanagh shapefile and create features that can be plotted on the axis
 assis_ferm = gpd.read_file('data_files/Assis_Fermanagh.shp')
 assisferm_feat = ShapelyFeature(assis_ferm['geometry'], myCRS, edgecolor='k', facecolor='w')
 xmin, ymin, xmax, ymax = assis_ferm.total_bounds
@@ -71,10 +71,11 @@ ax.set_extent([xmin, xmax, ymin, ymax], crs=myCRS) # because total_bounds gives 
 # but set_extent takes xmin, xmax, ymin, ymax, we re-order the coordinates here.
 
 
-#get the number of ASSI types and assign a colour to each
+
+#Assign a different colout to each type of ASSI
 num_types = len(assis_ferm.Type.unique())
 print('Number of unique features: {}'.format(num_types))
-assi_colors = ['forestgreen', 'cyan', 'green', 'purple','gold','red']
+assi_colors = ['blue', 'yellow', 'green', 'purple','black','red']
 type_names = list(assis_ferm.Type.unique())
 
 type_names.sort() # sort the types  alphabetically by name
@@ -86,7 +87,7 @@ for i, name in enumerate(type_names):
                           linewidth=2,
                           alpha=0.25)
     ax.add_feature(feat)
-myFig  # to show the updated figure
+#myFig  # to show the updated figure
 
 
 #generate_handles for ASSI Type
@@ -104,16 +105,16 @@ leg = ax.legend(handles, labels, title='ASSIs by type', title_fontsize=14,
                  fontsize=12, loc='upper right', frameon=True, framealpha=1)
 
 
-#subset the counties gdf to select Fermanagh
+#subset the counties gdf to Fermanagh, create feature and add to map
 counties = gpd.read_file('data_files/Counties.shp')
 fermanagh_gdf = counties[counties['CountyName']=='FERMANAGH']
-fermanagh_gdf.crs
-
+fermanagh_gdf.crs #check it is in UTM29N
 
 outline_feat = ShapelyFeature(fermanagh_gdf['geometry'], myCRS, facecolor='none', edgecolor = 'black')
 xmin, ymin, xmax, ymax = fermanagh_gdf.total_bounds
 ax.add_feature(outline_feat)
 
+#add gridlines, scalebar and title to the map
 gridlines = ax.gridlines(draw_labels=True,
                          xlocs=[-8, -7.5],
                          ylocs=[55, 54.5])
@@ -124,19 +125,26 @@ ax.set_extent([xmin, xmax, ymin, ymax], crs=myCRS) # set the extent to the bound
 scale_bar(ax)
 ax.set_title("Schools and ASSIs in Co Fermanagh")
 
-#myFig
+myFig
 
 
 
-
+##COULD THIS BE A BRANCH?
 #find the nearest ASSI to each school
 
 from shapely.strtree import STRtree
 #create a seach index of the ASSIs
-assis_tree = STRtree(assis_ferm['geometry'].values) # creates an STRtree object with the schs data
+assis_tree = STRtree(assis_ferm['geometry'].values) # creates an STRtree object with the ASSI data
 
 Fschs = myshcs.loc[myshcs['Name']=='Aghadrumsee Primary School', 'geometry'].values[0]
-nearest = assis_tree.nearest(Fschs) # gets the closest ASSI  to each sch
-#nearest
-#assis_ferm.head()
+
+nearest
+
+nearest_row = assis_ferm[assis_ferm['geometry'] == nearest]
+print(f'Name: {nearest_row.NAME} Type: {nearest_row.Type}')
+assis_ferm.head()
 #print.(assis_ferm)
+
+buffer_3km = myshcs['geometry'].buffer(distance=3000)
+
+assi_query = assis_tree.query(buffer_3km)
