@@ -16,6 +16,6 @@ assis_ferm = gpd.read_file('data_files/Assis_Fermanagh.shp')
 myschs = gpd.read_file('data_files/schoolF_points.shp')
 
 nearest_row = get_nearest_assi_to_sch(sch_name, assis_ferm, myschs)
-print(f'Name: {nearest_row.NAME} ')#Type: {nearest_row.Type}')
+print(f'Name: {nearest_row.NAME.values[0]}, Type: {nearest_row.Type.values[0]}, Habitat: {nearest_row.HABITAT.values[0]}, Species: {nearest_row.SPECIESPT1.values[0]}')
 
 
