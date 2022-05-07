@@ -4,11 +4,18 @@ import rasterio as rio
 from rasterio.plot import show, show_hist
 plt.rcParams.update({'font.size': 16})
 
-#read the Fermamagh land class 25m raster
-dataset = rio.open('data_files/output/fermlandclass25m.tif')
-print(dataset.crs)
-landcover = dataset.read(1)
-affine_tfm = dataset.transform
+
+def read_land_class_file(land_class_file):
+    '''
+    Read the first dataset from a landclass file
+
+    :param land_class_file: the landclass tif file
+    :return: the first dataset in the landclass tif file and the CRS
+
+    '''
+    dataset = rio.open(land_class_file)
+    land_cover = dataset.read(1)
+    return land_cover, dataset.crs
 
 #show(dataset, cmap = "Paired", title = 'Land Cover, Fermanagh')
 #show_hist(dataset, bins=50, title = 'Land Cover, Fermanagh')
@@ -22,21 +29,24 @@ def count_unique(array, nodata=0):
         count_dict[str(val)] = np.count_nonzero(array == val)
     return count_dict
 
-unique_landcover = count_unique(landcover)
-print(unique_landcover)
+#read the Fermamagh land class 25m raster
+land_cover, crs = read_land_class_file('data_files/output/fermlandclass25m.tif')
+print(crs)
+unique_land_cover = count_unique(land_cover)
+print(unique_land_cover)
 
 #assign names to landclass values
 
-def rename_dict(dict_in, old_names, new_names):
+def rename_dict(dict_in, new_names):
     '''
-    Rename the keys of a dictionary, given a list of old and new keynames
+    Rename the keys of a dictionary, given a list of new keynames
 
     :param dict_in: the dictionary to rename
-    :param old_names: a list of old keys
     :param new_names: a list of new key names
 
     :returns dict_out: a dictionary with the keys re-named
     '''
+    old_names = unique_land_cover.keys()
     dict_out = {}
     for new, old in zip(new_names, old_names):
         try:
@@ -45,10 +55,10 @@ def rename_dict(dict_in, old_names, new_names):
             continue
     return dict_out
 
-old_names = [float(i) for i in range(1, 22)]
+
 new_names = ['Broadleaved woodland','Coniferous Woodland','Arable and horticulture','Improved Grassland','Neutral Grassland','Calcareous Grassland','Acid grassland','Fen, Marsh, Swamp',
 'Heather','Heather grassland','Bog','Inland Rock','Saltwater','Freshwater','Supra-littoral Rock','Supra-littoral sediment','Littoral Rock','Littoral sediment',
 'Saltmarsh','Urban','Suburban']
 
-rename_dict(count_unique, old_names, new_names)
-
+new_count_unique = rename_dict (unique_land_cover, new_names)
+print (new_count_unique)
