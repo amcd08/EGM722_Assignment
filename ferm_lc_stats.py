@@ -2,7 +2,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 import rasterio as rio
 from rasterio.plot import show, show_hist
-plt.rcParams.update({'font.size': 16})
 
 
 def read_land_class_file(land_class_file):
@@ -13,15 +12,19 @@ def read_land_class_file(land_class_file):
     :return: the first dataset in the landclass tif file and the CRS
 
     '''
-    dataset = rio.open(land_class_file)
+    dataset = rio.open(land_class_file) #parameter is the file path
     land_cover = dataset.read(1)
-    return land_cover, dataset.crs
+    return land_cover, dataset
 
-#show(dataset, cmap = "Paired", title = 'Land Cover, Fermanagh')
-#show_hist(dataset, bins=50, title = 'Land Cover, Fermanagh')
 
-#define the function to return the no of pixels of each land class
 def count_unique(array, nodata=0):
+    '''
+    Get the number of pixels of each land class
+
+    :param array: array of the raster dataset
+    :param nodata: indicates the value that represents no data. Default = 0.
+    :return: A dictionary containing a count of the number of pixels of each land class.
+    '''
     count_dict = {}
     for val in np.unique(array):
         if val == nodata:
@@ -29,13 +32,6 @@ def count_unique(array, nodata=0):
         count_dict[str(val)] = np.count_nonzero(array == val)
     return count_dict
 
-#read the Fermamagh land class 25m raster
-land_cover, crs = read_land_class_file('data_files/output/fermlandclass25m.tif')
-print(crs)
-unique_land_cover = count_unique(land_cover)
-print(unique_land_cover)
-
-#assign names to landclass values
 
 def rename_dict(dict_in, new_names):
     '''
@@ -60,5 +56,23 @@ new_names = ['Broadleaved woodland','Coniferous Woodland','Arable and horticultu
 'Heather','Heather grassland','Bog','Inland Rock','Saltwater','Freshwater','Supra-littoral Rock','Supra-littoral sediment','Littoral Rock','Littoral sediment',
 'Saltmarsh','Urban','Suburban']
 
-new_count_unique = rename_dict (unique_land_cover, new_names)
-print (new_count_unique)
+
+#read the Fermamagh land class 25m raster
+land_cover, land_cover_dataset = read_land_class_file('data_files/output/fermlandclass25m.tif')
+print(land_cover_dataset.crs)
+unique_land_cover = count_unique(land_cover)
+print(unique_land_cover)
+
+#assign names to landclass values and print results
+named_count_unique = rename_dict (unique_land_cover, new_names)
+
+#print land class and pixel count as table
+print("{:<40} {:>15} {:>15}".format('Land class', 'Pixel Count', 'Area(ha)'))
+for key, val in named_count_unique.items():
+    area = int((val*25*25)/10000)
+    print("{:<40} {:>15} {:>15}".format(key, val, area))
+
+#display the Co Fermanagh raster showing the land classes by colour
+plt.rcParams.update({'font.size': 10})
+show(land_cover_dataset, cmap = "Paired", title = 'Land Cover, Fermanagh')
+show_hist(land_cover_dataset, bins=50, title = 'Land Cover, Fermanagh')
