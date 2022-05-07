@@ -1,15 +1,17 @@
+import matplotlib.pyplot as plt
 import numpy as np
 import rasterio as rio
-import geopandas as gpd
-import matplotlib.pyplot as plt
-from rasterstats import zonal_stats
-plt.rcParams.update({'font.size': 22})
+from rasterio.plot import show, show_hist
+plt.rcParams.update({'font.size': 16})
 
 #read the Fermamagh land class 25m raster
 dataset = rio.open('data_files/output/fermlandclass25m.tif')
 print(dataset.crs)
 landcover = dataset.read(1)
 affine_tfm = dataset.transform
+
+#show(dataset, cmap = "Paired", title = 'Land Cover, Fermanagh')
+#show_hist(dataset, bins=50, title = 'Land Cover, Fermanagh')
 
 #define the function to return the no of pixels of each land class
 def count_unique(array, nodata=0):
@@ -23,14 +25,30 @@ def count_unique(array, nodata=0):
 unique_landcover = count_unique(landcover)
 print(unique_landcover)
 
+#assign names to landclass values
 
-#generate 3km buffer around the schools
-schools = gpd.read_file('data_files/schoolF_points.shp')
-type(schools['geometry'])
-buffer3km_sch = schools['geometry'].buffer(distance=3000)
-buffer3km_sch.to_file('buffer3kmfsch.shp')
-sch3 = gpd.read_file('buffer3kmfsch.shp')
+def rename_dict(dict_in, old_names, new_names):
+    '''
+    Rename the keys of a dictionary, given a list of old and new keynames
 
-#generate the occurence of differernt land classes within 3km of each school
-buffer_stats = zonal_stats(sch3, landcover, affine=affine_tfm, categorical=True, nodata=0)
-print(buffer_stats[0])
+    :param dict_in: the dictionary to rename
+    :param old_names: a list of old keys
+    :param new_names: a list of new key names
+
+    :returns dict_out: a dictionary with the keys re-named
+    '''
+    dict_out = {}
+    for new, old in zip(new_names, old_names):
+        try:
+            dict_out[new] = dict_in[old]
+        except KeyError:
+            continue
+    return dict_out
+
+old_names = [float(i) for i in range(1, 22)]
+new_names = ['Broadleaved woodland','Coniferous Woodland','Arable and horticulture','Improved Grassland','Neutral Grassland','Calcareous Grassland','Acid grassland','Fen, Marsh, Swamp',
+'Heather','Heather grassland','Bog','Inland Rock','Saltwater','Freshwater','Supra-littoral Rock','Supra-littoral sediment','Littoral Rock','Littoral sediment',
+'Saltmarsh','Urban','Suburban']
+
+rename_dict(count_dict, old_names, new_names)
+
