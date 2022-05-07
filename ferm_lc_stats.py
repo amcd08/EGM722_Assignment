@@ -50,5 +50,5 @@ new_names = ['Broadleaved woodland','Coniferous Woodland','Arable and horticultu
 'Heather','Heather grassland','Bog','Inland Rock','Saltwater','Freshwater','Supra-littoral Rock','Supra-littoral sediment','Littoral Rock','Littoral sediment',
 'Saltmarsh','Urban','Suburban']
 
-rename_dict(old_names, new_names)
+rename_dict(count_unique, old_names, new_names)
 
