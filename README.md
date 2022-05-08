@@ -1,10 +1,12 @@
 # EGM722_Assignment
-A tool for Schools in Co Fermanagh to find their nearest ASSI
+Information for Schools in Co Fermanagh on the location of Areas of Special Scientific Inerest (ASSIs)
+and bog land class in Co. Fermanagh.  Schools can find their nearest ASSI.  
 
 ## Getting started
 
-The school should first install 'git' and 'conda' on a computer.  Follow the instructions for installing git from [here](https://git-scm.com/downloads), 
-and Anaconda from [here](https://docs.anaconda.com/anaconda/install/). 
+Install 'git' and 'conda'.  Follow the instructions for installing git from [here](https://git-scm.com/downloads), 
+and Anaconda from [here](https://docs.anaconda.com/anaconda/install/). An IDE such as PyCharm will assist with running
+the code. 
 
 
 ###  Obtaining the data
