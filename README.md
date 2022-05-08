@@ -24,8 +24,8 @@ managment system recommended for creating the environment; the GUI Anaconda can 
  
 - Once you have successfully cloned the repository, you can then create a `conda` environment.
 
-  To do this, use the environment.yml file provided in the repository. With Anaconda Navigator,
-  you can do this by selecting __Import__ from the bottom of the __Environments__ panel. 
+  The **environment.yml** file provided in the repository loads the packages and modules needed to run the script (it may take some time to load all the packages). With Anaconda Navigator,
+  you can set up the environment by selecting __Import__ from the bottom of the __Environments__ panel. 
 
   Otherwise, you can open a command prompt (on Windows, you may need to select an Anaconda command prompt). Navigate
   to the folder where you cloned this repository and run the following command:
