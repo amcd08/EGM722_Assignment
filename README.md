@@ -9,7 +9,7 @@ Install 'git' and 'conda'.  Follow the instructions for installing git from [her
 and Anaconda from [here](https://docs.anaconda.com/anaconda/install/). An IDE such as [PyCharm](https://www.jetbrains.com/pycharm/download/#section=windows) can assist with running the code. 
 
 
-###  Obtaining the data
+###  Creating and setting up the environment
 
 -  Download/clone this repository to the computer. 
 
@@ -28,7 +28,7 @@ and Anaconda from [here](https://docs.anaconda.com/anaconda/install/). An IDE su
 
   Once you have successfully cloned the repository, you can then create a `conda` environment.
 
-  To do this, use the environment.yml file provided in the repository. If you have Anaconda Navigator installed,
+  To do this, use the environment.yml file provided in the repository. With Anaconda Navigator,
   you can do this by selecting __Import__ from the bottom of the __Environments__ panel. 
 
   Otherwise, you can open a command prompt (on Windows, you may need to select an Anaconda command prompt). Navigate
@@ -43,7 +43,7 @@ C:\Users\amcd0812> conda env create -f environment.yml
 From the Anaconda Navigator, activate to the environment created and launch Pycharm (or another IDE of choice).  
 Navigate to the folder where the repository is stored.   
 
-- Data Files
+## Data Files
   -The location of schools in Northern Ireland.  This is available from the NI Government OpenData NI website, with the csv file 
  of the list of schools available here.  The list was filtered to select just the primary and secondary schools in County Fermanagh -  
  53 in total and is provided in the repository data files as FermSchl_l.txt. 
@@ -54,7 +54,7 @@ https://eidc.ac.uk/.
 - The Northern Ireland County boundaries shapefile, available from  Open Data NI. It is provided in the datafiles. 
 - The NI Mosaic tif, provided as part of the module. 
 
-- Packages
+##Packages
 The packages needed to run the code are included in the environment.yml file in the project repository and include:--
 1.	pandas: a Python library for analysis and manipulation of data, see https://pandas.pydata.org/.
 2.	GeoPandas, built on pandas, is an open source project designed to work with spatial data in Python, see  https://geopandas.org/en/stable/. 
