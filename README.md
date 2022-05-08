@@ -68,9 +68,9 @@ https://eidc.ac.uk/.
    -*Script: Nearest_ASSI.py* 
 
  3. Extracting and displaying landclass data for Co. Fermanagh. 
-   reprojecting the landclass data and masking the landclass and NI mosaic to the county boundary.
-   -*Scripts: reproject_nilc25raster.py, fermanagh_raster.py, ferm_mosaic.py*
-   calculating land class areas and displaying areas of bog.
+   Reprojecting the landclass data and masking the landclass and NI mosaic to the county boundary.
+   -*Scripts: reproject_nilc25raster.py, fermanagh_raster.py, ferm_mosaic.py*.  
+    Calculating land class areas and displaying areas of bog.
    -*Scripts: fermanagh_landclass_stats.py, lcdisplay.py*
 
 
