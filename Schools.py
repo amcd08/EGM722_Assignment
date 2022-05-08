@@ -121,5 +121,5 @@ ax.set_extent([xmin, xmax, ymin, ymax], crs=myCRS) # set the extent to the bound
 scale_bar(ax)
 ax.set_title("Schools and ASSIs in Co Fermanagh")
 
-myFig.savefig('map_of_schools_assis.png', bbox_inches='tight', dpi=300)
+myFig.savefig('Map of schools and ASSIs.png', bbox_inches='tight', dpi=300)
 
