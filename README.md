@@ -1,31 +1,30 @@
 # EGM722_Assignment
 This repository has been prepared as part of the Assignment for EGM722.  It contains information for Schools 
-in Co. Fermanagh on the location of Areas of Special Scientific Inerest (ASSIs) and bog land class in county.  
-Schools can find their nearest ASSI.  
+in Co. Fermanagh on the location of Areas of Special Scientific Inerest (ASSIs) and areas of bog in county, as a basis for field trips or ecology projects. 
+Schools can also find their nearest ASSI and some information on the designation features.
 
 ## Getting started
 
-Firstly, install 'git'. The instructions can be found  [here](https://git-scm.com/downloads), conda is the package 
-managment system recommended for creating the environment; the GUI Anaconda can be downloaded  [here](https://docs.anaconda.com/anaconda/install/). An IDE such as [PyCharm](https://www.jetbrains.com/pycharm/download/#section=windows) can assist with running the code. 
+Firstly, install 'git'. The instructions can be found  [here](https://git-scm.com/downloads). 
+conda is the package management system recommended for creating the environment.  The conda GUI Anaconda Navigator can be downloaded [here](https://docs.anaconda.com/anaconda/install/). 
 
 
 ###  Creating and setting up the environment
 
--  Once you have Git and Anaconda installed, __clone__ this repository to your computer.  Choose one of the following methods to do this:-
+-  Once you have Git and Anaconda installed, __clone__ this repository to your computer.  Either:-
 
 1. Open GitHub Desktop and select __File__ > __Clone Repository__. Select the __URL__ tab, then enter the URL for this 
    repository.
 2. Open __Git Bash__ (from the __Start__ menu); navigate to the folder where the repository is to be located and   
-   execute the following command: `git clone https://github.com/amcd08/EGM722_Assignmentgit`. You should see some messages
-   about downloading/unpacking files, and the repository should be set up.
+   execute the following command: `git clone https://github.com/amcd08/EGM722_Assignmentgit`. Messages about downloading/unpacking files will appear and the repository should be set up.
 
 
 ##  
  
 - Once you have successfully cloned the repository, you can then create a `conda` environment.
 
-  The **environment.yml** file provided in the repository loads the packages and modules needed to run the script (it may take some time to load all the packages). With Anaconda Navigator,
-  you can set up the environment by selecting __Import__ from the bottom of the __Environments__ panel. 
+  The **environment.yml** file provided in the repository loads the packages and modules needed to run the script (it may take some time for all these to load). 
+  With Anaconda Navigator, you can set up the environment by selecting __Import__ from the bottom of the __Environments__ panel. 
 
   Otherwise, you can open a command prompt (on Windows, you may need to select an Anaconda command prompt). Navigate
   to the folder where you cloned this repository and run the following command:
@@ -38,8 +37,9 @@ C:\Users\amcd0812> conda env create -f environment.yml
  
 - Open the project
 
- From Anaconda Navigator, activate to the project environment and launch Pycharm (or another IDE of choice).  
- Navigate to the folder where the repository is stored. 
+  From Anaconda Navigator, activate the project environment and navigate to the folder where the repository is stored.
+  An IDE can assist wiht running the code. The [PyCharm](https://www.jetbrains.com/pycharm/download/#section=windows) IDE can be launched from the Navigator. 
+ 
 
 
 
