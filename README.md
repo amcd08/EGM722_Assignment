@@ -58,17 +58,25 @@ https://eidc.ac.uk/.
 - The Northern Ireland County boundaries shapefile, available from  Open Data NI. It is provided in the datafiles. 
 - The NI Mosaic tif, provided as part of the module. 
 
-##Packages
-The packages needed to run the code are included in the environment.yml file in the project repository and include:--
-1.	pandas: a Python library for analysis and manipulation of data, see https://pandas.pydata.org/.
-2.	GeoPandas, built on pandas, is an open source project designed to work with spatial data in Python, see  https://geopandas.org/en/stable/. 
-3.	Cartopy, a package for use in Python to create maps and perform other geospatial analyses ( https://scitools.org.uk/cartopy/docs/latest/).     It uses the Python libraries of PROJ, NumPy and Shapely (these are provided by Anaconda) and has an interface built on Matplotlib. 
-4.	Matplotlib, a plotting library for Python which produces plots, see  https://matplotlib.org/. 
-5.	Rasterio, a Python package for reading, writing and performing geospatial analsyses with raster data (https://rasterio.readthedocs.io/en/latest/). 
-6.	Numpy, a Python library for mathematical functions and analysis (see https://numpy.org/). 
+
+
+##There are three aspects to the project. The Scripts for each aspect are detailed below.
+	The creation of the map of Co Fermanagh, which displays ASSIs and the locations of the primary and secondary schools.  
+	Script:   schools.py 
+
+	A function which identifies the nearest ASSI to each school.  
+	Script:   Nearest_ASSI.py . 
+
+	Extracting and displaying landclass data for Co. Fermanagh 
+	Scripts: reproject_nilc25raster.py, fermanagh_raster.py, ferm_mosaic.py - reprojecting the landclass data and masking the landclass and NI mosaic to 
+	the county boundary.
+	fermanagh_landclass_stats.py and : lcdisplay.py - calculating land class areas and displaying areas of bog.		 
+
+
 
 
 ## Next Steps
+-
 
  
 -
