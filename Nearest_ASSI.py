@@ -23,26 +23,3 @@ myschs = gpd.read_file('data_files/schoolF_points.shp')
 
 nearest_row = get_nearest_assi_to_sch(sch_name, assis_ferm, myschs)
 print(f'Name: {nearest_row.NAME.values[0]}, Type: {nearest_row.Type.values[0]}, Habitat: {nearest_row.HABITAT.values[0]}, Species: {nearest_row.SPECIESPT1.values[0]}')
-
-####
-def complete(text,state):
-
-    schls = [myschs('Name')]
-    results = [x for x in schls if x.startswith(text)] + [None]
-    return results[state]
-
-readline.set_completer(complete)
-line = input('prompt> ')
-
-
-import readline
-readline.parse_and_bind("tab: complete")
-
-def complete(text,state):
-    volcab = ['dog','cat','rabbit','bird','slug','snail']
-    results = [x for x in volcab if x.startswith(text)] + [None]
-    return results[state]
-
-readline.set_completer(complete)
-
-line = input('prompt> ')
