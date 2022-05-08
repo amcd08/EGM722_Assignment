@@ -1,19 +1,17 @@
 # EGM722_Assignment
 This repository has been prepared as part of the Assignment for EGM722.  It contains information for Schools 
-in Co Fermanagh on the location of Areas of Special Scientific Inerest (ASSIs) and bog land class in Co. Fermanagh.  
+in Co. Fermanagh on the location of Areas of Special Scientific Inerest (ASSIs) and bog land class in county.  
 Schools can find their nearest ASSI.  
 
 ## Getting started
 
-Install 'git' and 'conda'.  Follow the instructions for installing git from [here](https://git-scm.com/downloads), 
-and Anaconda from [here](https://docs.anaconda.com/anaconda/install/). An IDE such as [PyCharm](https://www.jetbrains.com/pycharm/download/#section=windows) can assist with running the code. 
+Firstly, install 'git'. The instructions can be found  [here](https://git-scm.com/downloads), conda is the package 
+managment system recommended for creating the environment; the GUI Anaconda can be downloaded  [here](https://docs.anaconda.com/anaconda/install/). An IDE such as [PyCharm](https://www.jetbrains.com/pycharm/download/#section=windows) can assist with running the code. 
 
 
 ###  Creating and setting up the environment
 
--  Download/clone this repository to the computer. 
-
-   Once you have Git and Anaconda installed, __clone__ this repository to your computer.  Choose one of the following methods to do this:-
+-  Once you have Git and Anaconda installed, __clone__ this repository to your computer.  Choose one of the following methods to do this:-
 
 1. Open GitHub Desktop and select __File__ > __Clone Repository__. Select the __URL__ tab, then enter the URL for this 
    repository.
@@ -24,9 +22,7 @@ and Anaconda from [here](https://docs.anaconda.com/anaconda/install/). An IDE su
 
 ##  
  
-- Create a conda environment
-
-  Once you have successfully cloned the repository, you can then create a `conda` environment.
+- Once you have successfully cloned the repository, you can then create a `conda` environment.
 
   To do this, use the environment.yml file provided in the repository. With Anaconda Navigator,
   you can do this by selecting __Import__ from the bottom of the __Environments__ panel. 
@@ -42,8 +38,8 @@ C:\Users\amcd0812> conda env create -f environment.yml
  
 - Open the project
 
- From Anaconda Navigator, activate to the environment created and launch Pycharm (or another IDE of choice).  
- Navigate to the folder where the repository is stored.
+ From Anaconda Navigator, activate to the project environment and launch Pycharm (or another IDE of choice).  
+ Navigate to the folder where the repository is stored. 
 
 
 
@@ -68,9 +64,9 @@ https://eidc.ac.uk/.
    -*Script: Nearest_ASSI.py* 
 
  3. Extracting and displaying landclass data for Co. Fermanagh. 
-   Reprojecting the landclass data and masking the landclass and NI mosaic to the county boundary.
+   -Reprojecting the landclass data and masking the landclass and NI mosaic to the county boundary.
    -*Scripts: reproject_nilc25raster.py, fermanagh_raster.py, ferm_mosaic.py*.  
-    Calculating land class areas and displaying areas of bog.
+    -Calculating land class areas and displaying areas of bog.
    -*Scripts: fermanagh_landclass_stats.py, lcdisplay.py*
 
 
