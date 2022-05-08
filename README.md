@@ -38,10 +38,14 @@ and Anaconda from [here](https://docs.anaconda.com/anaconda/install/). An IDE su
 C:\Users\amcd0812> conda env create -f environment.yml
 ```
 
-  
-- Open the Project.
-From the Anaconda Navigator, activate to the environment created and launch Pycharm (or another IDE of choice).  
-Navigate to the folder where the repository is stored.   
+##  
+ 
+- Open the project
+
+ From Anaconda Navigator, activate to the environment created and launch Pycharm (or another IDE of choice).  
+ Navigate to the folder where the repository is stored.
+
+
 
 ## Data Files
   -The location of schools in Northern Ireland.  This is available from the NI Government OpenData NI website, with the csv file 
