@@ -19,9 +19,15 @@ fig, ax = plt.subplots(1, 1, figsize=(10, 10), subplot_kw=dict(projection=myCRS)
 #percentile stretch returns to best results to display the background mosaic
 def percentile_stretch(image, pmin=0., pmax=100.):
     '''
-    #This is where you should write a docstring.
+    Display a raster with the percentile stretch contrast applied
+
+    :param image: the raster to be displayed
+    :param pmin: default min value is set to 0%
+    :param pmax: default max value is set to 100%
+    :return: the percentile stretch is applied when the image is displayed
     '''
-    # here, we make sure that pmin < pmax, and that they are between 0, 100
+
+    # ensure that pmin < pmax, and that they are between 0 and 100%
     if not 0 <= pmin < pmax <= 100:
         raise ValueError('0 <= pmin < pmax <= 100')
     # here, we make sure that the image is only 2-dimensional
@@ -37,13 +43,23 @@ def percentile_stretch(image, pmin=0., pmax=100.):
 
     return stretched
 
-#use this function
+
 def img_display(image, ax, bands, transform, extent, pmin=0, pmax=100):
     '''
-    This is where you should write a docstring.
+ scales an image to have values between 0 and 1 and re-orders the indices for display in imshow
+
+    :param image: the image to be displayed
+    :param ax: the axis of the plot
+    :param bands: the number of bands
+    :param transform: the transform of the image
+    :param extent: the image extent or bounds
+    :param pmin: default value of 0
+    :param pmax: default value of 1
+    :return: the image has a scalar floating point value; indices are ordered in rows, columns, bands
     '''
+
     dispimg = image.copy().astype(np.float32)  # make a copy of the original image,
-    # but be sure to cast it as a floating-point image, rather than an integer
+    #cast it as a floating-point image, rather than an integer
 
     for b in range(image.shape[0]):  # loop over each band, stretching using percentile_stretch()
         dispimg[b] = percentile_stretch(image[b], pmin=pmin, pmax=pmax)
@@ -67,6 +83,7 @@ with rio.open('data_files/output/fermlandclass25m.tif') as src:
     xmin, ymin, xmax, ymax = src.bounds
     landcover = src.read(1)
     affine_tfm = src.transform
+
 #using the numpy masked arrays (ma) function, mask all landclsses iexcept lc 11 (Bog)
 ax.imshow(np.ma.masked_not_equal(landcover, 11), cmap='autumn', transform=myCRS, extent=[xmin, xmax, ymin, ymax])
 ax.set_title('Areas of bog in Co Fermanagh')
