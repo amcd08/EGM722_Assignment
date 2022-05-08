@@ -60,7 +60,7 @@ https://eidc.ac.uk/.
 
 
 ## Next Steps
-  -There are three aspects to the project.  The scripts should be run in the order below. 
+  -There are three aspects to the project.  
  1. The creation of the map of Co Fermanagh, which displays ASSIs and the locations of the primary and secondary schools.  
     -*Script: schools.py* 
 
@@ -75,6 +75,6 @@ https://eidc.ac.uk/.
 
 
  
--
+- The scripts should be run in the order above.
 
 
