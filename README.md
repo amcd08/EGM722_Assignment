@@ -44,11 +44,9 @@ C:\Users\amcd0812> conda env create -f environment.yml
 
 
 ## Data Files
-  -The location of schools in Northern Ireland.  This is available from the NI Government OpenData NI website, with the csv file 
- of the list of schools available here.  The list was filtered to select just the primary and secondary schools in County Fermanagh -  
+- The location of schools in Northern Ireland.  This is available from the NI Government OpenData NI website [here](https://www.opendatani.gov.uk/dataset/locate-a-school).  The list was filtered to select just the primary and secondary schools in County Fermanagh -  
  53 in total and is provided in the repository data files as FermSchl_l.txt. 
-- The location of ASSIs in Northern Ireland.  This  is available from the OpenData NI website and is provided in shapefile format
- here. This shapefile was filtered to select just the ASSIs in Co Fermanagh, 95 in total; the shapefile is provided in the repository data files. 
+- The location of ASSIs in Northern Ireland. This  is available from the OpenData NI website [here](https://www.opendatani.gov.uk/dataset?tags=ASSI). This shapefile was filtered to select just the ASSIs in Co Fermanagh, 95 in total; the shapefile is provided in the repository data files. 
  -The Land Cover Map 2015 (25m raster, N. Ireland).  This can be obtained on request from the Environmental Information Data Centre, 
 https://eidc.ac.uk/.   
 - The Northern Ireland County boundaries shapefile, available from  Open Data NI. It is provided in the datafiles. 
