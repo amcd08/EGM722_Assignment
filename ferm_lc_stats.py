@@ -1,8 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import rasterio as rio
-from rasterio.plot import show, show_hist
-
+from rasterio.plot import show
 
 def read_land_class_file(land_class_file):
     '''
@@ -75,4 +74,4 @@ for key, val in named_count_unique.items():
 #display the Co Fermanagh raster showing the land classes by colour
 plt.rcParams.update({'font.size': 10})
 show(land_cover_dataset, cmap = "Paired", title = 'Land Cover, Fermanagh')
-show_hist(land_cover_dataset, bins=50, title = 'Land Cover, Fermanagh')
+
