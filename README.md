@@ -60,18 +60,18 @@ https://eidc.ac.uk/.
 
 
 ## Next Steps
-  -There are three aspects to the project; scripts should be run in the order below. 
+  -There are three aspects to the project.  The scripts should be run in the order below. 
  1. The creation of the map of Co Fermanagh, which displays ASSIs and the locations of the primary and secondary schools.  
     -*Script: schools.py* 
 
  2. A function which identifies the nearest ASSI to each school.  
    -*Script: Nearest_ASSI.py* 
 
- 3. Extracting and displaying landclass data for Co. Fermanagh 
-  - reprojects the landclass data and masks the landclass and NI mosaic to the county boundary.
-  - *Scripts: reproject_nilc25raster.py, fermanagh_raster.py, ferm_mosaic.py*
-  - calculating land class areas and displaying areas of bog.
-  - *Scripts: fermanagh_landclass_stats.py, lcdisplay.py*
+ 3. Extracting and displaying landclass data for Co. Fermanagh. 
+   reprojecting the landclass data and masking the landclass and NI mosaic to the county boundary.
+   -*Scripts: reproject_nilc25raster.py, fermanagh_raster.py, ferm_mosaic.py*
+   calculating land class areas and displaying areas of bog.
+   -*Scripts: fermanagh_landclass_stats.py, lcdisplay.py*
 
 
  
